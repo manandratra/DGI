@@ -1,37 +1,24 @@
-import { StyleSheet, Text, View } from "react-native";
-import { Router, Route, Link } from "./react-router";
+/**
+ * @author Manandratra
+ * @email alin.manandratra@gmail.com
+ * @create date 2022-05-25 09:55:49
+ * @modify date 2022-06-01 15:44:58
+ * @desc [description]
+ */
+import { Router, Route } from "./react-router";
+import HeaderComponent from "./Component/HeaderComponent";
+import AuthentificationComponent from "./Component/AuthentificationComponent";
+import ListComponent from  "./Component/ListComponent";
+import FormulaireComponent from './Component/FormulaireComponent';
 
-const Home = () => <Text>Home</Text>;
-
-const About = () => <Text>About</Text>;
-
-const App = () => (
-  <Router>
-    <View style={styles.container}>
-      <View style={styles.nav}>
-        <Link to="/">
-          <Text>Home</Text>
-        </Link>
-        <Link to="/about">
-          <Text>About</Text>
-        </Link>
-      </View>
-
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-    </View>
-  </Router>
-);
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 25,
-    padding: 10,
-  },
-  nav: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-});
-
+const App = () => {
+  return (
+    <Router>
+      <HeaderComponent />
+      <Route exact path="/" component={AuthentificationComponent} />
+      <Route path="/Home/:nif" component={ListComponent} />
+      <Route path="/Form" component={FormulaireComponent}/>
+    </Router>
+  );
+};
 export default App;
